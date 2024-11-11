@@ -2,17 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!-- 无参构造 -->
-        <bean id = "car1" class = "org.example.ioc_01.Car"/>
-    <!-- 静态工厂方法构造 -->
-        <bean id = "car2" class = "org.example.ioc_01.StaticCarFactory" factory-method="createCar">
-            <constructor-arg index="0" value="BMW"/>
-            <constructor-arg index="1" value="1"/>
-        </bean>
-    <!-- 非静态工厂方法构造 -->
-        <bean id = "carFactory" class = "org.example.ioc_01.CarFactory"/>
-        <bean id = "car3" factory-bean="carFactory" factory-method="createCar">
-            <constructor-arg index="0" value="BYD"/>
-            <constructor-arg index="1" value="2"/>
-        </bean>
+<!-- 无参构造 -->
+    <bean id = "car1" class = "org.example.ioc_01.Car"/>
+<!-- 静态工厂方法构造 -->
+    <bean id = "car2" class = "org.example.ioc_01.StaticCarFactory" factory-method="createCar">
+        <constructor-arg index="0" value="BMW"/>
+        <constructor-arg index="1" value="1"/>
+    </bean>
+<!-- 非静态工厂方法构造 -->
+    <bean id = "carFactory" class = "org.example.ioc_01.CarFactory"/>
+    <bean id = "car3" factory-bean="carFactory" factory-method="createCar">
+        <constructor-arg index="0" value="BYD"/>
+        <constructor-arg index="1" value="2"/>
+    </bean>
 </beans>
