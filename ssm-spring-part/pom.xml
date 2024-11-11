@@ -9,10 +9,13 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spring-ioc-xml-01</module>
+        <module>spring-ioc-xml-02</module>
+        <module>spring-ioc-annotation-03</module>
+        <module>spring-ioc-annotationprac</module>
     </modules>
 
     <properties>
-        <spring.version>6.0.6</spring.version>
+        <spring.version>6.1.14</spring.version>
         <junit.version>5.3.1</junit.version>
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>
@@ -31,6 +34,21 @@
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
                 <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.33</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.2.23</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>6.1.14</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="userDao" class="org.example.ioc_02.UserDao"/>
+    <!-- 单参数构造函数注入 -->
+    <bean id="userService1" class="org.example.ioc_02.UserService">
+        <constructor-arg name="userDao" ref="userDao"/>
+    </bean>
+    <!-- 多参数构造函数注入 -->
+        <!-- 用名字注入 -->
+    <bean id="userService2" class="org.example.ioc_02.UserService">
+        <constructor-arg name="userDao" ref="userDao"/>
+        <constructor-arg name="userId" value="1"/>
+    </bean>
+        <!-- 按顺序注入 -->
+    <bean id="userService3" class="org.example.ioc_02.UserService">
+        <constructor-arg ref="userDao"/>
+        <constructor-arg value="1"/>
+    </bean>
+    <!-- set方法注入 -->
+    <bean id="userService4" class="org.example.ioc_02.UserService">
+        <!-- 会自动调用对应的set方法来设置该属性 -->
+        <property name="userDao" ref="userDao"/>
+    </bean>
+</beans>
