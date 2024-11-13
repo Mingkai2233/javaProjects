@@ -12,7 +12,8 @@ public class MyTest {
     @Test
     public void test() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfiguration.class);
-        Caculator bean = context.getBean(Caculator.class);
+        Caculator bean = context.getBean("myCaculator", Caculator.class);
         bean.add(1,2);
+
     }
 }

@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e27f7288-84a8-49d3-ad20-770fc7480b6c" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-aop-01/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/Caculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/MyConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/MyLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/impl/MyCaculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-aop-01/src/test/java/MyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/main/java/org/example/Controller/StudentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/main/java/org/example/ControllerImpl/StudentControllerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/main/java/org/example/Dao/StudentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/main/java/org/example/DaoImpl/StudentDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/main/java/org/example/Service/StudentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/main/java/org/example/ServiceImpl/StudentServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/main/java/org/example/StudentConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/main/java/org/example/pojo/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/main/resources/jdbc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/test/java/StudentTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-ioc-java/src/test/java/TestPro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c09d8d4-8e49-4d57-bfd7-6d7e7df775d3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6c09d8d4-8e49-4d57-bfd7-6d7e7df775d3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c09d8d4-8e49-4d57-bfd7-6d7e7df775d3/storage_v2/_src_/schema/studb.sg2LBg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6c09d8d4-8e49-4d57-bfd7-6d7e7df775d3/storage_v2/_src_/schema/studb.sg2LBg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/MyPointCuts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-ioc-annotationprac/src/test/java/StudentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-ioc-annotationprac/src/test/java/StudentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/MyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/MyLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop-01/src/test/java/MyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop-01/src/test/java/MyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,6 +200,7 @@
       <workItem from="1731419220323" duration="1797000" />
       <workItem from="1731421031046" duration="52000" />
       <workItem from="1731421085379" duration="302000" />
+      <workItem from="1731476119586" duration="6013000" />
     </task>
     <servers />
   </component>
@@ -236,6 +214,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/MyConfiguration.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
