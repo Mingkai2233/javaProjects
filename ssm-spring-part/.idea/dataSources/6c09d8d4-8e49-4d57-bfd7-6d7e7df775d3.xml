@@ -749,24 +749,24 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <schema id="224" parent="1" name="information_schema">
       <CollationName>utf8_general_ci</CollationName>
     </schema>
-    <schema id="225" parent="1" name="learnjdbc">
+    <schema id="225" parent="1" name="mysql">
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
-    <schema id="226" parent="1" name="mysql">
-      <CollationName>latin1_swedish_ci</CollationName>
-    </schema>
-    <schema id="227" parent="1" name="performance_schema">
+    <schema id="226" parent="1" name="performance_schema">
       <CollationName>utf8_general_ci</CollationName>
     </schema>
+    <schema id="227" parent="1" name="prac">
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
     <schema id="228" parent="1" name="studb">
-      <LastIntrospectionLocalTimestamp>2024-11-09.08:04:08</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-11-11.08:12:38</LastIntrospectionLocalTimestamp>
       <CollationName>latin1_swedish_ci</CollationName>
     </schema>
     <schema id="229" parent="1" name="sys">
       <CollationName>utf8_general_ci</CollationName>
     </schema>
     <schema id="230" parent="1" name="udsconsole">
-      <CollationName>latin1_swedish_ci</CollationName>
+      <CollationName>utf8_general_ci</CollationName>
     </schema>
     <schema id="231" parent="1" name="udsconsolemix">
       <CollationName>latin1_swedish_ci</CollationName>
@@ -785,7 +785,6 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
     <column id="236" parent="235" name="id">
-      <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(11)|0s</StoredType>

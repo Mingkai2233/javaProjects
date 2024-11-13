@@ -12,11 +12,13 @@
         <module>spring-ioc-xml-02</module>
         <module>spring-ioc-annotation-03</module>
         <module>spring-ioc-annotationprac</module>
+        <module>spring-ioc-java</module>
+        <module>spring-aop-01</module>
     </modules>
 
     <properties>
         <spring.version>6.1.14</spring.version>
-        <junit.version>5.3.1</junit.version>
+        <junit.version>5.11.3</junit.version>
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -48,6 +50,11 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
+                <version>6.1.14</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
                 <version>6.1.14</version>
             </dependency>
         </dependencies>

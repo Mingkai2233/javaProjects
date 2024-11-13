@@ -1,14 +1,16 @@
 import org.example.ControllerImpl.StudentControllerImpl;
+import org.example.StudentConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.List;
 
 public class StudentTest {
     @Test
     public void getAllTest(){
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-students.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.register(StudentConfiguration.class);
+        context.refresh();
         StudentControllerImpl studentController = context.getBean( StudentControllerImpl.class);
         studentController.getAll();
     }
