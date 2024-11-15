@@ -14,6 +14,7 @@
         <module>spring-ioc-annotationprac</module>
         <module>spring-ioc-java</module>
         <module>spring-aop-01</module>
+        <module>spring-tx-annotation-12</module>
     </modules>
 
     <properties>
@@ -50,12 +51,27 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
-                <version>6.1.14</version>
+                <version>${spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
-                <version>6.1.14</version>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>{spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>{spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

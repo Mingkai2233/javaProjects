@@ -3,6 +3,17 @@
   <component name="LeetcodeEditor">
     <option name="projectConfig">
       <map>
+        <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[3249]统计好节点的数目.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[3249]统计好节点的数目.md" />
+              <option name="frontendQuestionId" value="leetcode.cn3249" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[3249]统计好节点的数目.java" />
+              <option name="titleSlug" value="count-the-number-of-good-nodes" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[3254]长度为 K 的子数组的能量值 I.java">
           <value>
             <LeetcodeEditor>

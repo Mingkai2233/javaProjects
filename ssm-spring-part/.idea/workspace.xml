@@ -5,10 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e27f7288-84a8-49d3-ad20-770fc7480b6c" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/MyPointCuts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tx-annotation-12/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tx-annotation-12/src/main/java/org/example/config/JavaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tx-annotation-12/src/main/java/org/example/dao/StudentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tx-annotation-12/src/main/java/org/example/service/StudentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tx-annotation-12/src/main/resources/jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tx-annotation-12/src/test/java/TxTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6c09d8d4-8e49-4d57-bfd7-6d7e7df775d3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6c09d8d4-8e49-4d57-bfd7-6d7e7df775d3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/MyLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop-01/src/main/java/org/example/MyLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-aop-01/src/test/java/MyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop-01/src/test/java/MyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop-01/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop-01/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,61 +58,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.IocTest.testDqlForListPojo.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.IocTest.testIoc (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.IocTest.testIoc.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.IocTest.testSpringTemplate.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JUnit5IntegrationTest.test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyTest.test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyTest.testIocAnnotation.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SpringIocTest.getBeanFromIoc.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SpringIocTest.test_04.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SpringIocTest.test_05.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StudentTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StudentTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StudentTest.getAllTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StudentTest.getAllTest (2).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StudentTest.getAllTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StudentTestPro.test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestPro.test.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.spring-ioc-annotation-03 [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.spring-ioc-annotation-03 [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.ssm-spring-part [clean].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/javaProjects/ssm-spring-part/spring-ioc-java/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/javaProjects/ssm-spring-part/spring-aop-01/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.MyTest.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.IocTest.testDqlForListPojo.executor": "Run",
+    "JUnit.IocTest.testIoc (1).executor": "Run",
+    "JUnit.IocTest.testIoc.executor": "Run",
+    "JUnit.IocTest.testSpringTemplate.executor": "Run",
+    "JUnit.JUnit5IntegrationTest.test.executor": "Run",
+    "JUnit.MyTest.test.executor": "Run",
+    "JUnit.MyTest.testIocAnnotation.executor": "Run",
+    "JUnit.SpringIocTest.getBeanFromIoc.executor": "Run",
+    "JUnit.SpringIocTest.test_04.executor": "Run",
+    "JUnit.SpringIocTest.test_05.executor": "Run",
+    "JUnit.StudentTest (1).executor": "Run",
+    "JUnit.StudentTest.executor": "Run",
+    "JUnit.StudentTest.getAllTest (1).executor": "Run",
+    "JUnit.StudentTest.getAllTest (2).executor": "Run",
+    "JUnit.StudentTest.getAllTest.executor": "Run",
+    "JUnit.StudentTestPro.test.executor": "Run",
+    "JUnit.TestPro.test.executor": "Run",
+    "JUnit.TxTest.testTx.executor": "Run",
+    "Maven.spring-ioc-annotation-03 [clean].executor": "Run",
+    "Maven.spring-ioc-annotation-03 [compile].executor": "Run",
+    "Maven.ssm-spring-part [clean].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/javaProjects/ssm-spring-part/spring-tx-annotation-12/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/javaProjects/ssm-spring-part/spring-aop-01/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.MyTest.executor": "Run"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql_aurora&quot;,
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql_aurora",
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\javaProjects\ssm-spring-part\spring-tx-annotation-12\src\main\resources" />
       <recent name="D:\javaProjects\ssm-spring-part\spring-ioc-java\src\main\resources" />
       <recent name="D:\javaProjects\ssm-spring-part\spring-ioc-java\src\main\java\org\example" />
       <recent name="D:\javaProjects\ssm-spring-part\spring-ioc-java\src\main\java\" />
       <recent name="D:\javaProjects\ssm-spring-part\spring-ioc-annotationprac\src\main\java\org\example" />
-      <recent name="D:\javaProjects\ssm-spring-part\spring-ioc-annotationprac\src\main\resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.example" />
@@ -111,7 +122,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyTest.test">
+  <component name="RunManager" selected="JUnit.TxTest.testTx">
     <configuration name="MyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MyTest" />
       <module name="spring-aop-01" />
@@ -149,11 +160,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="studentTestPro.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spring-ioc-java" />
+    <configuration name="TxTest.testTx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-tx-annotation-12" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="studentTestPro" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="TxTest" />
+      <option name="METHOD_NAME" value="testTx" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -161,13 +172,21 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TxTest.testTx" />
         <item itemvalue="JUnit.MyTest.test" />
         <item itemvalue="应用程序.MyTest" />
         <item itemvalue="JUnit.StudentTest.getAllTest (2)" />
         <item itemvalue="JUnit.TestPro.test" />
-        <item itemvalue="JUnit.studentTestPro.test" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -201,6 +220,7 @@
       <workItem from="1731421031046" duration="52000" />
       <workItem from="1731421085379" duration="302000" />
       <workItem from="1731476119586" duration="6013000" />
+      <workItem from="1731562271721" duration="6344000" />
     </task>
     <servers />
   </component>
