@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="org.example.mapper.UserMapper">
+
+    <!-- 查询使用 select标签
+            id = 方法名
+            resultType = 返回值类型
+            标签内编写SQL语句
+     -->
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into user(username, password) values(#{name}, #{password});
+    </insert>
+    <update id="update">
+        update user set username=#{name}, password=#{password}
+            where id=#{id};
+    </update>
+    <delete id="delete">
+        delete from user where id=#{id};
+    </delete>
+    <select id="selectById" resultType="org.example.poji.User">
+        select id, username name, password from user where id=#{id};
+    </select>
+    <select id="selectAll" resultType="org.example.poji.User">
+        select id, username name, password from user;
+    </select>
+</mapper>
