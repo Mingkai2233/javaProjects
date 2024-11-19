@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 
-
+@EnableWebMvc
 @Configuration
 @ComponentScan("org.example.controller")
 public class SpringMvcConfig {
