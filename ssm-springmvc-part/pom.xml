@@ -8,6 +8,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>springmvc-base-input-02</module>
+    <module>springmvc-base-output-03</module>
   </modules>
   <properties> 
     <maven.compiler.source>23</maven.compiler.source>  
@@ -59,6 +60,12 @@
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <version>1.18.34</version>
+      </dependency>
+      <!-- jsp需要依赖! jstl-->
+      <dependency>
+        <groupId>jakarta.servlet.jsp.jstl</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+        <version>3.0.2</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
