@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="org.example.springbootheadlinepart.mapper.HeadlineMapper">
+    <insert id="insertOne" useGeneratedKeys="true" keyColumn="hid" keyProperty="hid">
+        INSERT INTO news_headline
+        (title, article, type, publisher, page_views, create_time, update_time)
+        VALUES
+        (#{title}, #{article}, #{type}, #{publisher}, #{pageViews}, NOW(), NOW())
+    </insert>
+
+    <update id="updatePageViewsById">
+        UPDATE news_headline SET page_views = page_views + 1, version = version+1
+        WHERE version = #{version} AND hid=#{hid}
+    </update>
+    <update id="updateByID">
+        UPDATE news_headline
+        SET title=#{title}, article=#{article}, type=#{type}, update_time=NOW(), version=version+1
+        WHERE hid=#{hid}
+    </update>
+    <delete id="deleteByID">
+        DELETE FROM news_headline WHERE hid=#{hid}
+    </delete>
+
+
+    <select id="selectByTitleAndType" resultType="org.example.springbootheadlinepart.pojo.Headline">
+        SELECT hid, title, type, page_views pageViews, publisher, TIMESTAMPDIFF(HOUR, create_time, NOW()) pastHours
+        FROM news_headline
+        WHERE is_deleted=0
+        <if test="keyword!=null and keyword.length() > 0">
+            AND title LIKE concat('%', #{keyword}, '%')
+        </if>
+        <if test="type!=null and type != 0">
+            AND type=#{type}
+        </if>
+    </select>
+
+    <select id="selectDetailMap" resultType="java.util.Map">
+        SELECT  h.hid hid, h.title title, h.article article, h.type type, t.tname typeName, h.page_views pageViews,
+                TIMESTAMPDIFF(HOUR, create_time, NOW()) pastHours,
+                h.publisher publisher, u.username author
+        FROM news_headline h LEFT JOIN news_type t ON h.type=t.tid
+                             LEFT JOIN news_user u ON h.publisher=u.uid
+        WHERE h.hid=#{hid}
+    </select>
+    <select id="selectVersionById" resultType="java.lang.Integer">
+        SELECT version FROM news_headline WHERE hid=#{hid}
+    </select>
+    <select id="selectOneByID" resultType="org.example.springbootheadlinepart.pojo.Headline">
+        SELECT hid, title, article, type FROM news_headline WHERE hid=#{hid}
+    </select>
+</mapper>

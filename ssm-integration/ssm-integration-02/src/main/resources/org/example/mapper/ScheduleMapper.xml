@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="org.example.mapper.ScheduleMapper">
+    <insert id="insertSchedule" parameterType="org.example.pojo.Schedule"
+            keyProperty="id" useGeneratedKeys="true" >
+        INSERT INTO schedule(title, completed)VALUES(#{title}, #{completed})
+    </insert>
+
+    <update id="updateScheduleById" parameterType="org.example.pojo.Schedule">
+        UPDATE schedule SET title = #{title}, completed = #{completed} WHERE id=#{id}
+    </update>
+    <delete id="deleteScheduleById">
+        DELETE FROM schedule WHERE id=#{id}
+    </delete>
+
+    <select id="getAllSchedule" resultType="org.example.pojo.Schedule">
+        SELECT * FROM schedule
+    </select>
+</mapper>

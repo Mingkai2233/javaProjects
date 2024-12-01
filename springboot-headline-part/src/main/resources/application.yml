@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/sm_db
+    username: root
+    password: root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+    map-underscore-to-camel-case: true
+
+
+#jwt配置
+jwt:
+  token:
+    tokenExpiration: 120 #有效时间,单位分钟
+    tokenSignKey: headline123456  #当前程序签名秘钥 自定义
+log:
+logging:
+  level:
+    root: INFO
+    org.example.springbootheadlinepart.mapper: DEBUG
+    org.example.springbootheadlinepart.controller: DEBUG
+    org.example.springbootheadlinepart.service: DEBUG

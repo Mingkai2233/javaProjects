@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/springboot-quick-01/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-base-yml-02/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-base-log/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatisplus-01/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatisp-01/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatisplus-test/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/mybatisp-01/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatisplus-01/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

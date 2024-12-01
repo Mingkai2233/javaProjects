@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="org.example.springbootheadlinepart.mapper.UserMapper">
+    <insert id="insertOne">
+        INSERT INTO news_user (username, user_pwd, nick_name) VALUES
+                                (#{username}, #{userPwd}, #{nickName})
+    </insert>
+
+
+    <select id="selectOneByUsername" resultType="org.example.springbootheadlinepart.pojo.User">
+        SELECT * FROM news_user WHERE username=#{name}
+    </select>
+    <select id="selectOneByUsernameAndPassword" resultType="org.example.springbootheadlinepart.pojo.User">
+        SELECT * FROM news_user WHERE username=#{name} AND user_pwd=#{password}
+    </select>
+    <select id="selectOneById" resultType="org.example.springbootheadlinepart.pojo.User">
+        SELECT * FROM news_user WHERE uid=#{id}
+    </select>
+</mapper>
