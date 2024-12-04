@@ -42,9 +42,8 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
                 .excludePathPatterns("/admin/employee/login");
     }
 
+
     //设置自定义转换器，将日期转换为特定格式json数据
-
-
     @Override
     protected void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         log.info("开始注册自定义转换器...");
