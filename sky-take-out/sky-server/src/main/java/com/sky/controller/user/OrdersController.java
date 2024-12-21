@@ -1,6 +1,5 @@
 package com.sky.controller.user;
 
-import com.alibaba.fastjson.JSON;
 import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.dto.OrdersPaymentDTO;
 import com.sky.dto.OrdersSubmitDTO;
@@ -15,8 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @Api(tags = "C端订单接口")
 @Slf4j
@@ -24,12 +21,9 @@ import java.util.Map;
 @RequestMapping("/user/order")
 public class OrdersController {
     private final OrdersService ordersService;
-    private final WebSocketServer webSocketServer;
     @Autowired
-    public OrdersController(OrdersService ordersService,
-                            WebSocketServer webSocketServer) {
+    public OrdersController(OrdersService ordersService) {
         this.ordersService = ordersService;
-        this.webSocketServer = webSocketServer;
     }
 
     @ApiOperation("提交订单接口")
