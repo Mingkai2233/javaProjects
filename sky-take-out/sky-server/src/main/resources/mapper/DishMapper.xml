@@ -6,16 +6,132 @@
 <mapper namespace="com.sky.mapper.DishMapper">
 
     <insert id="insertOne" parameterType="com.sky.entity.Dish" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        INSERT INTO dish (name, category_id, price, image, description, status, create_time, update_time, create_user, update_user)
-        VALUES(#{name}, #{categoryId}, #{price}, #{image}, #{description}, #{status}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})
+        INSERT INTO dish (name, category_id, price, image, description, status, create_time, update_time, create_user,
+        update_user)
+        VALUES(#{name}, #{categoryId}, #{price}, #{image}, #{description}, #{status}, #{createTime}, #{updateTime},
+        #{createUser}, #{updateUser})
     </insert>
     <insert id="insertFlavor" parameterType="com.sky.entity.DishFlavor">
         INSERT INTO dish_flavor (dish_id, name, value) VALUES (#{dishId}, #{name}, #{value})
     </insert>
+    <update id="update">
+        UPDATE dish
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="image != null">image = #{image},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateUser != null">update_user = #{updateUser},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    <delete id="deleteBatchByIds">
+        DELETE FROM dish WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+
+    </delete>
 
 
     <select id="countByCategoryId" resultType="java.lang.Integer">
-        select count(id) from dish where category_id = #{categoryId}
+        select count(id)
+        from dish
+        where category_id = #{categoryId}
+    </select>
+    <select id="selectPage" resultType="com.sky.vo.DishVO">
+        SELECT d.*, c.name AS categoryName FROM dish d LEFT OUTER JOIN category c ON d.category_id=c.id
+        <where>
+            <if test="name!=null and name.length()>0">
+                d.name LIKE CONCAT('%', #{name}, '%') and
+            </if>
+            <if test="categoryId!=null">
+                d.category_id = #{categoryId} and
+            </if>
+            <if test="status!=null">
+                d.status = #{status}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+    <select id="selectSellingDishIds" resultType="java.lang.Long">
+        SELECT id FROM dish WHERE status=1 and id IN
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </select>
 
+    <select id="selectDishByCategory" resultType="com.sky.entity.Dish">
+        SELECT *
+        FROM dish
+        WHERE category_id = #{categoryId}
+    </select>
+    <select id="selectOneById" resultType="com.sky.vo.DishVO">
+        SELECT d.*, c.name AS categoryName
+        FROM dish d
+                 LEFT OUTER JOIN category c ON d.category_id = c.id
+        WHERE d.id = #{id}
+    </select>
+    <resultMap id="map1" type="com.sky.vo.DishVO">
+        <id column="dishId" property="id"/>
+        <result column="dishName" property="name"/>
+        <result column="dishCategoryId" property="categoryId"/>
+        <result column="dishPrice" property="price"/>
+        <result column="dishImage" property="image"/>
+        <result column="dishDescription" property="description"/>
+        <result column="dishStatus" property="status"/>
+        <result column="dishUpdateTime" property="updateTime"/>
+        <result column="categoryName" property="categoryName"/>
+        <collection property="flavors" ofType="com.sky.entity.DishFlavor">
+            <id column="flavorId" property="id"/>
+            <result column="dishId" property="dishId"/>
+            <result column="flavorName" property="name"/>
+            <result column="flavorValue" property="value"/>
+        </collection>
+    </resultMap>
+    <select id="selectDishWithCategoryNameAndFlavorsByid" resultMap="map1">
+        SELECT d.id          dishId,
+               d.name        dishName,
+               d.category_id dishCategoryId,
+               d.price       dishPrice,
+               d.image       dishImage,
+               d.description dishDescription,
+               d.status      dishStatus,
+               d.update_time dishUpdateTime,
+               c.name        categoryName,
+               f.id          flavorId,
+               f.name        flavorName,
+               f.value       flavorValue
+        FROM dish d
+                 LEFT OUTER JOIN category c ON d.category_id = c.id
+                 LEFT OUTER JOIN dish_flavor f ON d.id = f.dish_id
+        WHERE d.id = #{id}
+    </select>
+    <select id="selectDishBySetmealId" resultType="com.sky.entity.Dish">
+        SELECT d.*
+        FROM dish d
+                 JOIN setmeal_dish sd ON d.id = sd.dish_id
+        WHERE sd.setmeal_id = #{setmeal_id}
+    </select>
+    <select id="selectDishByCategoryIdAndStatus" resultType="com.sky.entity.Dish">
+        SELECT * FROM dish WHERE category_id = #{categoryId} AND status = #{status}
+    </select>
+    <select id="selectDishById" resultType="com.sky.entity.Dish">
+        SELECT * FROM dish WHERE id = #{dishId}
+    </select>
+
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from dish
+        <where>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -29,6 +29,7 @@ public class CommonController {
     @ApiOperation("上传文件功能")
     @PostMapping("/upload")
     public Result<Object> upload(MultipartFile file) throws IOException, ServerException, InsufficientDataException, ErrorResponseException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException {
+        log.info("上传图片：{}", file.getOriginalFilename());
         String fileName = minioUtil.uploadFile(file);
         return Result.success(fileName);
     }

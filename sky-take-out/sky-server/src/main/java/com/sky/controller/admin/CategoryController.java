@@ -1,5 +1,6 @@
 package com.sky.controller.admin;
 
+import com.sky.constant.CacheNameConstant;
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.entity.Category;
@@ -10,6 +11,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -69,9 +71,11 @@ public class CategoryController {
      * @param categoryDTO
      * @return
      */
+    @CacheEvict(cacheNames = {CacheNameConstant.USER_SETMEAL_CACHE_NAME,CacheNameConstant.USER_DISH_CACHE_NAME}, key="#categoryDTO.id")
     @PutMapping
     @ApiOperation("修改分类")
     public Result<String> update(@RequestBody CategoryDTO categoryDTO){
+        log.info("修改分类：{}", categoryDTO);
         categoryService.update(categoryDTO);
         return Result.success();
     }

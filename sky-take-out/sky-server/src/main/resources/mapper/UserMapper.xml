@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="com.sky.mapper.UserMapper">
+    <insert id="insertUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO user
+        (openid, name, phone, sex, id_number, avatar, create_time)
+        VALUES
+        (#{openid}, #{name}, #{phone}, #{sex}, #{idNumber}, #{avatar}, #{createTime})
+
+    </insert>
+
+    <select id="selectUserByOpenid" resultType="com.sky.entity.User">
+        SELECT * FROM user WHERE openid=#{openid}
+    </select>
+    <select id="selectOneById" resultType="com.sky.entity.User">
+        SELECT * FROM user WHERE id=#{userId}
+    </select>
+    <select id="selectBatchByCreateTime" resultType="com.sky.entity.User">
+        SELECT * FROM user WHERE create_time BETWEEN #{beginTime} AND #{endTime}
+    </select>
+    <select id="countBefore" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM user WHERE create_time &lt; #{createTime}
+    </select>
+</mapper>

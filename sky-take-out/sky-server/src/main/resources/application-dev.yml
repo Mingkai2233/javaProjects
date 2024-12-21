@@ -6,3 +6,17 @@ sky:
     database: sky_take_out
     username: root
     password: root
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 10
+  minio:
+    endpoint: http://localhost:9000
+    access-key: ztSawi1jKte56EHTwqFy
+    secret-key: DfJHIzBmoQbv9Y7sHB7o0GaBRvFHOVMxcZaKaIux
+    bucket-name: sky-take-out-images
+  shop:
+    address: 陕西省西安市西北工业大学长安校区北门
+  baidu:
+    ak:

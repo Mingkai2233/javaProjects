@@ -42,7 +42,7 @@ public interface CategoryMapper {
 
     /**
      * 根据类型查询分类
-     * @param type
+     * @param type 套餐类还是菜品类
      * @return
      */
     List<Category> list(Integer type);

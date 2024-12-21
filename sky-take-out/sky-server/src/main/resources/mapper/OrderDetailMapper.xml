@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="com.sky.mapper.OrderDetailMapper">
+
+    <insert id="insertBatch">
+        INSERT INTO order_detail
+            (name, image, order_id, dish_id, setmeal_id, dish_flavor, number, amount)
+        VALUES
+            <foreach collection="orderDetails" item="od" separator=",">
+                (#{od.name}, #{od.image}, #{od.orderId}, #{od.dishId}, #{od.setmealId}, #{od.dishFlavor}, #{od.number}, #{od.amount})
+            </foreach>
+    </insert>
+    <select id="selectBatchByOrderId" resultType="com.sky.entity.OrderDetail">
+        SELECT * FROM order_detail WHERE order_id=#{orderId}
+    </select>
+    <select id="selectTop10" resultType="com.sky.pojo.Top10Data">
+        SELECT name, SUM(number) AS number
+        FROM order_detail
+        WHERE order_id IN
+        <foreach collection="orderIds" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+        GROUP BY name
+        ORDER BY SUM(number) DESC
+    </select>
+</mapper>

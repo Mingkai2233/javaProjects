@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace等于mapper接口类的全限定名,这样实现对应 -->
+<mapper namespace="com.sky.mapper.SetmealDishMapper">
+    <insert id="insertBatch">
+        INSERT INTO setmeal_dish
+        (setmeal_id, dish_id, name, price, copies)
+        VALUES
+        <foreach collection="setmealDishes" item="d" separator=",">
+            (#{d.setmealId}, #{d.dishId}, #{d.name}, #{d.price}, #{d.copies})
+        </foreach>
+    </insert>
+    <delete id="deleteBatchBySetmealIds">
+        DELETE FROM setmeal_dish WHERE setmeal_id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectSetmealIdsByDishIds" resultType="java.lang.Long">
+        SELECT setmeal_id FROM setmeal_dish WHERE dish_id IN 
+                                            <foreach collection="dishIds" item="dishId" open="(" separator="," close=")">
+                                                #{dishId}
+                                            </foreach>
+    </select>
+    <select id="selectBySetmealId" resultType="com.sky.entity.SetmealDish">
+        SELECT * FROM setmeal_dish WHERE setmeal_id=#{id}
+    </select>
+</mapper>

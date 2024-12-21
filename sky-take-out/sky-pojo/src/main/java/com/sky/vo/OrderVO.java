@@ -6,17 +6,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderVO extends Orders implements Serializable {
-
-    //订单菜品信息
+    // 菜品名称和数量
     private String orderDishes;
-
-    //订单详情
+    // 菜品信息
     private List<OrderDetail> orderDetailList;
 
 }
