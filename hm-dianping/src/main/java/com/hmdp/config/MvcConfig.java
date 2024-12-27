@@ -22,7 +22,8 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 登录状态刷新
-        registry.addInterceptor(new UpdateLoginStatusInterceptor(stringRedisTemplate)).addPathPatterns("/**");
+        registry.addInterceptor(new UpdateLoginStatusInterceptor(stringRedisTemplate)).addPathPatterns("/**")
+                .excludePathPatterns("/user/code", "/user/login");
         // 登录拦截器
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
                 .excludePathPatterns("/user/code", "/user/login");

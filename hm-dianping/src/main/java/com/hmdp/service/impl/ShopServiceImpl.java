@@ -1,11 +1,21 @@
 package com.hmdp.service.impl;
 
+import cn.hutool.core.util.StrUtil;
+import com.alibaba.fastjson2.JSON;
+import com.hmdp.constant.ErrorMessageConstant;
+import com.hmdp.constant.RedisConstants;
 import com.hmdp.dto.Result;
 import com.hmdp.entity.Shop;
+import com.hmdp.exception.CommonException;
 import com.hmdp.mapper.ShopMapper;
 import com.hmdp.service.IShopService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -17,10 +27,41 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IShopService {
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private ShopMapper shopMapper;
 
     @Override
     public Result queryById(Long id) {
+        Shop res;
+        // 1. 从redis中查询店铺数据
+        String jshop =  stringRedisTemplate.opsForValue().get(RedisConstants.CACHE_SHOP_KEY + id);
+        // 1.1 存在直接返回
+        if(StrUtil.isNotBlank(jshop)){
+            res = JSON.parseObject(jshop, Shop.class);
+            return Result.ok(res);
+        }
+        // 2. 不存在，从数据库中查询
+        res = shopMapper.selectById(id);
+        // 2.1 店铺不存在，返回错误信息
+        if(res == null) throw new CommonException(ErrorMessageConstant.SHOP_NOT_EXIST);
+        // 3. 店铺存在 将数据存入redis中
+        jshop = JSON.toJSONString(res);
+        stringRedisTemplate.opsForValue().set(RedisConstants.CACHE_SHOP_KEY + id, jshop,
+                RedisConstants.CACHE_SHOP_TTL, TimeUnit.MINUTES);
+        // 4. 返回数据
+        return Result.ok(res);
+    }
 
-        return null;
+    @Transactional
+    @Override
+    public void update(Shop shop) {
+        // 1. 检查id是否为空
+        if (shop.getId() == null ) throw new CommonException(ErrorMessageConstant.SHOP_NOT_EXIST);
+        // 2. 更新数据库
+        shopMapper.updateById(shop);
+        // 3. 删除缓存
+        stringRedisTemplate.delete(RedisConstants.CACHE_SHOP_KEY + shop.getId());
     }
 }
