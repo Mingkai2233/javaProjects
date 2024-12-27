@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 
 public class MyTest {
@@ -49,5 +50,12 @@ public class MyTest {
         nums[0] = 90;
         int[] nums2 = {2,3,4};
         Arrays.stream(nums).forEach(System.out::println);
+    }
+
+    @Test
+    public void testStream(){
+        List<Integer> list = new ArrayList<>();
+        System.out.println(list.stream().reduce(Integer::sum).orElse(0));
+        System.out.println(Stream.<String>empty().findAny());
     }
 }

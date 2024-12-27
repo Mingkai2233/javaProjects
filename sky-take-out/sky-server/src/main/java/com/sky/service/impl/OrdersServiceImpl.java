@@ -102,7 +102,7 @@ public class OrdersServiceImpl implements OrdersService {
         ordersMapper.insertOne(orders);
         // 3向order_detail插入多条数据
         // 组装数据
-        List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+        List<OrderDetail> orderDetails = new ArrayList<>();
         for (ShoppingCart cart: shoppingCarts){
             OrderDetail orderDetail = new OrderDetail();
             BeanUtils.copyProperties(cart, orderDetail);

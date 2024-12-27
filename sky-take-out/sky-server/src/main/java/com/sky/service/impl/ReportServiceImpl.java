@@ -48,7 +48,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     private List<LocalDate> getTimeList(LocalDate begin, LocalDate end) {
-        List<LocalDate> times = new ArrayList<LocalDate>();
+        List<LocalDate> times = new ArrayList<>();
         LocalDate tmp = begin;
         while (tmp.isBefore(end)) {
             times.add(tmp);
