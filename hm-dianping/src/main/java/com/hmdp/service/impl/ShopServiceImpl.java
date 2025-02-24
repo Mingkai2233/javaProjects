@@ -32,20 +32,29 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
     @Autowired
     private ShopMapper shopMapper;
 
+
     @Override
     public Result queryById(Long id) {
         Shop res;
         // 1. 从redis中查询店铺数据
         String jshop =  stringRedisTemplate.opsForValue().get(RedisConstants.CACHE_SHOP_KEY + id);
-        // 1.1 存在直接返回
+        // 1.1 存在且不为空 直接返回
         if(StrUtil.isNotBlank(jshop)){
             res = JSON.parseObject(jshop, Shop.class);
             return Result.ok(res);
         }
-        // 2. 不存在，从数据库中查询
+        // 1.2 存在但是是空字符串，返回错误信息
+        if (jshop != null){
+            throw new CommonException(ErrorMessageConstant.SHOP_NOT_EXIST);
+        }
+        // 2. 未命中缓存，从数据库中查询
         res = shopMapper.selectById(id);
-        // 2.1 店铺不存在，返回错误信息
-        if(res == null) throw new CommonException(ErrorMessageConstant.SHOP_NOT_EXIST);
+        // 2.1 店铺不存在，返回错误信息， 并将空值存入redis中
+        if(res == null){
+            stringRedisTemplate.opsForValue().set(RedisConstants.CACHE_SHOP_KEY + id, "",
+                    RedisConstants.CACHE_NULL_TTL, TimeUnit.MINUTES);
+            throw new CommonException(ErrorMessageConstant.SHOP_NOT_EXIST);
+        }
         // 3. 店铺存在 将数据存入redis中
         jshop = JSON.toJSONString(res);
         stringRedisTemplate.opsForValue().set(RedisConstants.CACHE_SHOP_KEY + id, jshop,
@@ -53,6 +62,8 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
         // 4. 返回数据
         return Result.ok(res);
     }
+
+
 
     @Transactional
     @Override

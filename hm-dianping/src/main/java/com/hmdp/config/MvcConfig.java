@@ -26,7 +26,7 @@ public class MvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/user/code", "/user/login");
         // 登录拦截器
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/user/code", "/user/login");
+                .excludePathPatterns("/user/code", "/user/login", "/shop/{id}");
 
     }
 }
