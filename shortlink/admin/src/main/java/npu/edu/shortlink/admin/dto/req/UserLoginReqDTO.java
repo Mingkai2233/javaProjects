@@ -15,20 +15,24 @@
  * limitations under the License.
  */
 
-package npu.edu.shortlink.admin.common.constant;
+package npu.edu.shortlink.admin.dto.req;
+
+import lombok.Data;
 
 /**
- * 短链接后管 Redis 缓存常量类
+ * 用户登录请求参数
  * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
-public class RedisCacheConstant {
+@Data
+public class UserLoginReqDTO {
 
     /**
-     * 用户注册分布式锁
+     * 用户名
      */
-    public static final String LOCK_USER_REGISTER_KEY = "short-link:lock_user-register:";
+    private String username;
+
     /**
-     * 用户登录缓存标识
+     * 密码
      */
-    public static final String USER_LOGIN_KEY = "short-link:login:";
+    private String password;
 }
