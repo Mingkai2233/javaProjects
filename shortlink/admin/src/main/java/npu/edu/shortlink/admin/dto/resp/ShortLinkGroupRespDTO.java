@@ -15,24 +15,34 @@
  * limitations under the License.
  */
 
-package npu.edu.shortlink.admin.common.constant;
+package npu.edu.shortlink.admin.dto.resp;
+
+import lombok.Data;
 
 /**
- * 短链接后管 Redis 缓存常量类
+ * 短链接分组返回实体对象
  * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
-public class RedisCacheConstant {
+@Data
+public class ShortLinkGroupRespDTO {
 
     /**
-     * 用户注册分布式锁
+     * 分组标识
      */
-    public static final String LOCK_USER_REGISTER_KEY = "short-link:lock_user-register:";
+    private String gid;
+
     /**
-     * 用户登录缓存标识
+     * 分组名称
      */
-    public static final String USER_LOGIN_KEY = "short-link:login:";
+    private String name;
+
     /**
-     * 分组创建分布式锁
+     * 分组排序
      */
-    public static final String LOCK_GROUP_CREATE_KEY = "short-link:lock_group-create:%s";
+    private Integer sortOrder;
+
+    /**
+     * 分组下短链接数量
+     */
+    private Integer shortLinkCount;
 }

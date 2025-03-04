@@ -15,24 +15,32 @@
  * limitations under the License.
  */
 
-package npu.edu.shortlink.admin.common.constant;
+package npu.edu.shortlink.admin.dao.entity;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * 短链接后管 Redis 缓存常量类
+ * 短链接分组唯一路由实体
  * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
-public class RedisCacheConstant {
+@Data
+@TableName("t_group_unique")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class GroupUniqueDO {
 
     /**
-     * 用户注册分布式锁
+     * id
      */
-    public static final String LOCK_USER_REGISTER_KEY = "short-link:lock_user-register:";
+    private Long id;
+
     /**
-     * 用户登录缓存标识
+     * 分组标识
      */
-    public static final String USER_LOGIN_KEY = "short-link:login:";
-    /**
-     * 分组创建分布式锁
-     */
-    public static final String LOCK_GROUP_CREATE_KEY = "short-link:lock_group-create:%s";
+    private String gid;
 }

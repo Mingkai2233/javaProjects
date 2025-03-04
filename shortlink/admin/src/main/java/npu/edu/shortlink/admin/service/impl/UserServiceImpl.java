@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import npu.edu.shortlink.admin.common.convention.exception.ClientException;
 import npu.edu.shortlink.admin.common.convention.exception.ServiceException;
 import npu.edu.shortlink.admin.common.enums.UserErrorCodeEnum;
@@ -36,6 +37,7 @@ import static npu.edu.shortlink.admin.common.constant.RedisCacheConstant.USER_LO
 import static npu.edu.shortlink.admin.common.enums.UserErrorCodeEnum.USER_NAME_EXIST;
 import static npu.edu.shortlink.admin.common.enums.UserErrorCodeEnum.USER_SAVE_ERROR;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements UserService {
@@ -122,7 +124,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         }
         // 校验用户是否已经登录
         Map<Object, Object> hasLoginMap = stringRedisTemplate.opsForHash().entries(USER_LOGIN_KEY + requestParam.getUsername());
-        // 如果没登陆，就刷新用户数据有效期
+        // 如果已经登陆，就刷新用户数据有效期，并返回token
         if (CollUtil.isNotEmpty(hasLoginMap)) {
             stringRedisTemplate.expire(USER_LOGIN_KEY + requestParam.getUsername(), 30L, timeUnit);
             String token = hasLoginMap.keySet().stream()

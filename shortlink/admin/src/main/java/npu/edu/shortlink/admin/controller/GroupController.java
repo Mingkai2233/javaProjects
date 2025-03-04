@@ -15,24 +15,36 @@
  * limitations under the License.
  */
 
-package npu.edu.shortlink.admin.common.constant;
+package npu.edu.shortlink.admin.controller;
+
+
+import lombok.RequiredArgsConstructor;
+import npu.edu.shortlink.admin.common.convention.result.Result;
+import npu.edu.shortlink.admin.common.convention.result.Results;
+import npu.edu.shortlink.admin.dto.req.ShortLinkGroupSaveReqDTO;
+import npu.edu.shortlink.admin.service.GroupService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 短链接后管 Redis 缓存常量类
+ * 短链接分组控制层
  * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
-public class RedisCacheConstant {
+@RestController
+@RequiredArgsConstructor
+public class GroupController {
+
+    private final GroupService groupService;
 
     /**
-     * 用户注册分布式锁
+     * 新增短链接分组
      */
-    public static final String LOCK_USER_REGISTER_KEY = "short-link:lock_user-register:";
-    /**
-     * 用户登录缓存标识
-     */
-    public static final String USER_LOGIN_KEY = "short-link:login:";
-    /**
-     * 分组创建分布式锁
-     */
-    public static final String LOCK_GROUP_CREATE_KEY = "short-link:lock_group-create:%s";
+    @PostMapping("/api/short-link/admin/v1/group")
+    public Result<Void> save(@RequestBody ShortLinkGroupSaveReqDTO requestParam) {
+        groupService.saveGroup(requestParam.getName());
+        return Results.success();
+    }
+
+
 }
