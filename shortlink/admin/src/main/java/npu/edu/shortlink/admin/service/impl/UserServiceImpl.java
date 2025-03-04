@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import npu.edu.shortlink.admin.common.convention.exception.ClientException;
 import npu.edu.shortlink.admin.common.convention.exception.ServiceException;
 import npu.edu.shortlink.admin.common.enums.UserErrorCodeEnum;
@@ -36,7 +36,7 @@ import static npu.edu.shortlink.admin.common.constant.RedisCacheConstant.USER_LO
 import static npu.edu.shortlink.admin.common.enums.UserErrorCodeEnum.USER_NAME_EXIST;
 import static npu.edu.shortlink.admin.common.enums.UserErrorCodeEnum.USER_SAVE_ERROR;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements UserService {
 
@@ -57,6 +57,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         return result;
     }
 
+    // 使用布隆过滤器判断用户名是否已经存在，防止缓存穿透
     @Override
     public Boolean hasUsername(String username) {
         return !userRegisterCachePenetrationBloomFilter.contains(username);
@@ -108,17 +109,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 
     @Override
     public UserLoginRespDTO login(UserLoginReqDTO requestParam) {
+        // 用户数据有效期
+        TimeUnit timeUnit = TimeUnit.DAYS;
+        // 查数据库判断用户是否存在
         LambdaQueryWrapper<UserDO> queryWrapper = Wrappers.lambdaQuery(UserDO.class)
                 .eq(UserDO::getUsername, requestParam.getUsername())
                 .eq(UserDO::getPassword, requestParam.getPassword())
                 .eq(UserDO::getDelFlag, 0);
         UserDO userDO = baseMapper.selectOne(queryWrapper);
         if (userDO == null) {
-            throw new ClientException("用户不存在");
+            throw new ClientException("用户不存在或者密码错误");
         }
+        // 校验用户是否已经登录
         Map<Object, Object> hasLoginMap = stringRedisTemplate.opsForHash().entries(USER_LOGIN_KEY + requestParam.getUsername());
+        // 如果没登陆，就刷新用户数据有效期
         if (CollUtil.isNotEmpty(hasLoginMap)) {
-            stringRedisTemplate.expire(USER_LOGIN_KEY + requestParam.getUsername(), 30L, TimeUnit.MINUTES);
+            stringRedisTemplate.expire(USER_LOGIN_KEY + requestParam.getUsername(), 30L, timeUnit);
             String token = hasLoginMap.keySet().stream()
                     .findFirst()
                     .map(Object::toString)
@@ -132,10 +138,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
          *  Key：token标识
          *  Val：JSON 字符串（用户信息）
          */
-
+        // 将用户信息存入redis
         String uuid = UUID.randomUUID().toString();
         stringRedisTemplate.opsForHash().put(USER_LOGIN_KEY + requestParam.getUsername(), uuid, JSON.toJSONString(userDO));
-        stringRedisTemplate.expire(USER_LOGIN_KEY + requestParam.getUsername(), 30L, TimeUnit.MINUTES);
+        stringRedisTemplate.expire(USER_LOGIN_KEY + requestParam.getUsername(), 30L, timeUnit);
         return new UserLoginRespDTO(uuid);
     }
 }
