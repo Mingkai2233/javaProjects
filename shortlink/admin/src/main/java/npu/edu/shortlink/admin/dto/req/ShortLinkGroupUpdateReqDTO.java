@@ -15,42 +15,24 @@
  * limitations under the License.
  */
 
-package npu.edu.shortlink.admin.service;
+package npu.edu.shortlink.admin.dto.req;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import npu.edu.shortlink.admin.dao.entity.GroupDO;
-import npu.edu.shortlink.admin.dto.req.ShortLinkGroupSortReqDTO;
-import npu.edu.shortlink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
-import npu.edu.shortlink.admin.dto.resp.ShortLinkGroupRespDTO;
-
-import java.util.List;
+import lombok.Data;
 
 /**
- * 短链接分组接口层
+ * 短链接分组修改参数
  * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
-public interface GroupService extends IService<GroupDO> {
+@Data
+public class ShortLinkGroupUpdateReqDTO {
 
     /**
-     * 新增短链接分组
-     *
-     * @param groupName 短链接分组名
+     * 分组标识
      */
-    void saveGroup(String groupName);
+    private String gid;
 
     /**
-     * 新增短链接分组
-     *
-     * @param username  用户名
-     * @param groupName 短链接分组名
+     * 分组名
      */
-    void saveGroup(String username, String groupName);
-
-    List<ShortLinkGroupRespDTO> listGroup();
-
-    void updateGroup(ShortLinkGroupUpdateReqDTO requestParam);
-
-    void deleteGroup(String gid);
-
-    void sortGroup(List<ShortLinkGroupSortReqDTO> requestParam);
+    private String name;
 }
