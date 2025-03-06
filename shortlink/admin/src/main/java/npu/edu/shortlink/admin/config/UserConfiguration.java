@@ -22,14 +22,13 @@ import lombok.RequiredArgsConstructor;
 import npu.edu.shortlink.admin.common.biz.user.UserTransmitFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 /**
  * 用户配置自动装配
  * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
-@Configuration
+//@Configuration
 @RequiredArgsConstructor
 public class UserConfiguration {
     private final StringRedisTemplate redisTemplate;
